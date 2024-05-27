@@ -1,7 +1,7 @@
 import { check, sleep } from "k6";
 import http from "k6/http";
 
-const BASE_URL = "http://localhost:3000";
+const BASE_URL = "http://localhost:3000/dynamic";
 
 export const options = {
   scenarios: {

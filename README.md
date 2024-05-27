@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Getting started
 
-## Getting Started
-
-First, run the development server:
+### Installing dependencies
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Installing pm2
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm install
+npm install -g pm2
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Installing k6 for load testing
 
-## Learn More
+```bash
+brew install k6
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Running the load test
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Static Next.js pages
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+#### Without PM2
 
-## Deploy on Vercel
+```bash
+npm run build
+node .next/standalone/server.js
+k6 run ./load-tests/static.js
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+#### With PM2
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```bash
+npm run build
+pm2 start .next/standalone/server.js -i max
+k6 run ./load-tests/static.js
+```
+
+### Dynamic Next.js pages
+
+#### Without PM2
+
+```bash
+npm run build
+node .next/standalone/server.js
+k6 run ./load-tests/dynamic.js
+```
+
+#### With PM2
+
+```bash
+npm run build
+pm2 start .next/standalone/server.js -i max
+k6 run ./load-tests/dynamic.js
+```
