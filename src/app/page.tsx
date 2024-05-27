@@ -8,7 +8,7 @@ export default async function Home() {
    */
   const start = Date.now();
   let now = start;
-  while (now - start < 5000) {
+  while (now - start < 500) {
     now = Date.now();
   }
 
