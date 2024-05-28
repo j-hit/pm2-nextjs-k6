@@ -35,7 +35,7 @@ k6 run ./load-tests/static.js
 
 ```bash
 npm run build
-pm2 start .next/standalone/server.js -i max
+pm2 start .next/standalone/server.js -i 0
 k6 run ./load-tests/static.js
 ```
 
@@ -53,6 +53,6 @@ k6 run ./load-tests/dynamic.js
 
 ```bash
 npm run build
-pm2 start .next/standalone/server.js -i max
+pm2 start .next/standalone/server.js -i 0
 k6 run ./load-tests/dynamic.js
 ```
